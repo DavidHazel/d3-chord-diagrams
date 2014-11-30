@@ -1,1 +1,1 @@
-src,dst,weighta,d, 0.25 a,e, 0.30 b,e, 0.40 c,f, 0.50 b,g, 0.50 e,g, 0.90 e,g, 0.50 g,i, 0.70 h,i, 0.40 
+src,dst,weightDM_a,CM_d, 0.25 DM_a,PR_e, 0.30 DX_b,PR_e, 0.40 DX_c,PR_f, 0.50 CM_d,PR_g, 0.50 PR_e,PR_g, 0.90 PR_e,PR_h, 0.50 PR_g,PR_i, 0.70 PR_h,PR_i, 0.40 
