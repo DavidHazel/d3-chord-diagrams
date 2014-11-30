@@ -1,4 +1,4 @@
-has,prefers,count
+src,dst,weight
 "black","red",2868
 "blonde","brown",2060
 "brown","blonde",16145

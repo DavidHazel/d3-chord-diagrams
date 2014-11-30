@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      #tooltip {
+        color: white;
+        opacity: .9;
+        background: #333;
+        padding: 5px;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        position: absolute;
+        z-index: 10;
+        visibility: hidden;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+      #circle circle {
+        fill: none;
+        pointer-events: all;
+      }
+      path.group {
+        fill-opacity: .8;
+      }
+      path.chord {
+        fill-opacity: .8;
+        stroke: #000;
+        stroke-width: .25px;
+      }
+      #circle:hover path.fade {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tooltip"></div>
+    <script src="lib/d3.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="js/mapper.js"></script>
+    <script>
+      //*******************************************************************
+      //  CREATE MATRIX AND MAP
+      //*******************************************************************
+      d3.csv('data/hair.csv', function (error, data) {
+        var mpr = chordMpr(data);
+
+        mpr
+          .addValuesToMap('src')
+          .setFilter(function (row, a, b) {
+            //from == src, to == destination node
+        //    console.log((row.src === a.name && row.dst === b.name));
+            return (row.src === a.name && row.dst === b.name)
+          })
+          .setAccessor(function (recs, a, b) {
+         
+            if (!recs[0]) return 0;
+            var wt =recs[0].weight;
+          //  console.log(wt);
+            // strength of the tie or the edge weight
+            //convert Scientific notation to number
+            
+            return +wt;
+          });
+console.log(mpr.getMatrix());
+        //drawChords(mpr.getMatrix(), mpr.getMap());
+      });
+    
+
+    </script>
+  </body>
+</html>
