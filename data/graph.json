@@ -1,0 +1,102 @@
+[
+    {
+        "risk": ".65",
+        "graph": [
+            {
+                "src": "DM_a",
+                "dst": "CM_d",
+                "weight": 0.25
+            },
+            {
+                "src": "DM_a",
+                "dst": "PR_e",
+                "weight": 0.3
+            },
+            {
+                "src": "DX_b",
+                "dst": "PR_e",
+                "weight": 0.4
+            },
+            {
+                "src": "DX_c",
+                "dst": "PR_f",
+                "weight": 0.5
+            },
+            {
+                "src": "CM_d",
+                "dst": "PR_g",
+                "weight": 0.5
+            },
+            {
+                "src": "PR_e",
+                "dst": "PR_g",
+                "weight": 0.9
+            },
+            {
+                "src": "PR_e",
+                "dst": "PR_h",
+                "weight": 0.5
+            },
+            {
+                "src": "PR_g",
+                "dst": "PR_i",
+                "weight": 0.7
+            },
+            {
+                "src": "PR_h",
+                "dst": "PR_i",
+                "weight": 0.4
+            }
+        ]
+    },
+    {
+        "risk": ".55",
+        "graph": [
+            {
+                "src": "DM_a",
+                "dst": "CM_d",
+                "weight": 0.35
+            },
+            {
+                "src": "DM_a",
+                "dst": "PR_e",
+                "weight": 0.35
+            },
+            {
+                "src": "DX_b",
+                "dst": "PR_e",
+                "weight": 0.5
+            },
+            {
+                "src": "DX_c",
+                "dst": "PR_f",
+                "weight": 0.4
+            },
+            {
+                "src": "CM_d",
+                "dst": "PR_g",
+                "weight": 0.7
+            },
+            {
+                "src": "PR_e",
+                "dst": "PR_g",
+                "weight": 0.3
+            },
+            {
+                "src": "PR_e",
+                "dst": "PR_h",
+                "weight": 0.5
+            },
+            {
+                "src": "PR_g",
+                "dst": "PR_i",
+                "weight": 0.4
+            },
+            {
+                "src": "PR_h",
+                "dst": "PR_i",
+                "weight": 0.5
+            }
+        ]
+    }
+]
