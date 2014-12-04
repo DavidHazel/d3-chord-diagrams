@@ -61,25 +61,22 @@
 /**** JSON LOAD *****/
       d3.json('data/graph.json', function (error, keyed_graph) {
         var riskKey = ".65";
-        
-
         graph_data = keyed_graph;
-          resetRiskOptions(graph_data);
-          prepareGraph(riskKey, graph_data);
+        resetRiskOptions(graph_data);
+        prepareGraph(riskKey, graph_data);
       });
 
    
 
-      function resetRiskOptions(graph_data){
+      /**
+        Remove the old risk options and 
+        load the new ones based on the data
+      **/
 
-          //remove the old risk options
+      function resetRiskOptions(graph_data){
           $("#risk-options").empty();
-          //load the new onews based on the data
            _.each(graph_data, function (elem) {
-                 
                  $("#risk-options").append('<div><input  type="radio" name="risk" value="' + elem.risk + '" id="' + elem.risk + '"><label for="' + elem.risk + '">' + elem.risk + '%</label></div>');
-                  
-               
                 });
           bindRiskOptions();
       }
@@ -136,9 +133,15 @@
       function drawChords (matrix, mmap) {
         var w = 980, h = 800, r1 = h / 2, r0 = r1 - 100;
 
-        var fill = d3.scale.ordinal()
-            .domain(d3.range(4))
-            .range(["#000000", "#FFDD89", "#957244", "#F26223"]);
+        var fill = d3.scale.category20c();
+
+        /*ordinal()
+            .domain(d3.range(7))
+            .category20c();
+           // .range(["#000000", "#FFDD89", "#957244", "#F26223"]);
+           // .range(["#007BD2", "#FFBE6A", "#FF9300", "#FF9300", "#B96800", "#5CB85C", "#4CAE4C"]);
+
+           */
 
         var chord = d3.layout.chord()
             .padding(.02)

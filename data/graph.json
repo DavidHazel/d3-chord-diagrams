@@ -105,32 +105,32 @@
             {
                 "src": "DM_a",
                 "dst": "CM_d",
-                "weight": 0.1
+                "weight": 0.3
             },
             {
                 "src": "DM_a",
                 "dst": "PR_e",
-                "weight": 0.1
+                "weight": 0.3
             },
             {
                 "src": "DX_b",
                 "dst": "PR_e",
-                "weight": 0.1
+                "weight": 0.3
             },
             {
                 "src": "DX_c",
                 "dst": "PR_f",
-                "weight": 0.1
+                "weight": 0.2
             },
             {
                 "src": "CM_d",
                 "dst": "PR_g",
-                "weight": 0.1
+                "weight": 0.2
             },
             {
                 "src": "PR_e",
                 "dst": "PR_g",
-                "weight": 0.1
+                "weight": 0.2
             },
             {
                 "src": "PR_e",
