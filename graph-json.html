@@ -38,6 +38,11 @@
         left: 20px;
         top: 20px;
       }
+      #threshold-wrapper{
+        position: absolute;
+        left: 80%;
+        top: 20px;
+      }
     </style>
   </head>
   <body>
@@ -63,6 +68,7 @@
         var riskKey = ".65";
         graph_data = keyed_graph;
         resetRiskOptions(graph_data);
+        resetThreshold();
         prepareGraph(riskKey, graph_data);
       });
 
@@ -76,13 +82,32 @@
       function resetRiskOptions(graph_data){
           $("#risk-options").empty();
            _.each(graph_data, function (elem) {
-                 $("#risk-options").append('<div><input  type="radio" name="risk" value="' + elem.risk + '" id="' + elem.risk + '"><label for="' + elem.risk + '">' + elem.risk + '%</label></div>');
+                 $("#risk-options").append('<div><input  type="radio" name="risk" value="' + elem.risk + '" id="' + elem.risk + '"><label for="' + elem.risk + '">' + Math.round(elem.risk* 100) + '%</label></div>');
                 });
           bindRiskOptions();
       }
 
+      function resetThreshold(){
+
+       for(i = 1; i < 11; i++) {
+          $("#threshold-options").append('<div><input  type="radio" name="risk" value=".' + i * 10 + '" id="' + i*10 + '"><label for="' + i * 10 + '">' + i * 10 + '%</label></div>');
+                       
+        }
+  
+      }
+
       function bindRiskOptions(){
         $("#risk-wrapper input").click(function(){
+       //clear the svg.
+       $("svg").remove();
+        prepareGraph(this.value, graph_data);
+      });
+      }
+
+
+      function bindThresholdOptions(){
+        $("#threshold-wrapper input").click(function(){
+          select the radio button
        //clear the svg.
        $("svg").remove();
         prepareGraph(this.value, graph_data);
@@ -109,7 +134,7 @@
         })
 
         mpr.setFilter(function (row, a, b) {
-           return (row.src === a.name && row.dst === b.name)
+           return (row.src === a.name && row.dst === b.name && row.weight >= threshold)
          //   return (name(row.src) === a.name)
           })
           .setAccessor(function (recs, a, b) {
@@ -246,11 +271,12 @@
 
       <div id="risk-wrapper">
       Readmission Risk
-        <div id="risk-options">
-
-
-        </div>
+        <div id="risk-options"></div>
                
+      </div>
+      <div id="threshold-wrapper">
+        Threshold Cutoff
+          <div id="threshold-options"></div>
       </div>
   </body>
 </html>
